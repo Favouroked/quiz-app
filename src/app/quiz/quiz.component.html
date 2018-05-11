@@ -1,9 +1,10 @@
 
-<div *ngFor="let x of questions; let ques = index" class="card text-center  " style="width: 18rem; margin-bottom: 20px; margin-top: 20px;">
+<div class="card text-center  " style="width: 18rem; margin-bottom: 20px; margin-top: 20px;">
   <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">{{ x.category.name }}</h6>
-    <p class="card-text">{{ x.question }}</p>
-    <a *ngFor="let op of x.options; let ans = index" href="#" (click)="isAnswer(ans, ques)" class="card-link">{{ op }}</a>
+    <h6 class="card-subtitle mb-2 text-muted">{{ question.category.name }}</h6>
+    <p class="card-text">{{ question.question }}</p>
+    <a *ngFor="let op of question.options; let ans = index" href="#" (click)="isAnswer(ans)" class="card-link">{{ op }}</a>
     <div>{{correct}}</div>
   </div>
 </div>
+<a href="#" (click)="nextQuestion()">Next</a>

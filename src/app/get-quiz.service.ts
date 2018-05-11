@@ -9,7 +9,7 @@ export class GetQuizService {
     this.questions = [
       {
         _id: '1',
-        category: {_id: 1, name: 'Mathematics'},
+        category: {_id: '1', name: 'Mathematics'},
         question: 'What is 1+1',
         time: '30',
         options: ['1', '2', '3', '4'],
@@ -17,7 +17,7 @@ export class GetQuizService {
       },
       {
         _id: '2',
-        category: {_id: 1, name: 'Mathematics'},
+        category: {_id: '1', name: 'Mathematics'},
         question: 'What is 2 x 2',
         time: '30',
         options: ['10', '4', '8', '9'],

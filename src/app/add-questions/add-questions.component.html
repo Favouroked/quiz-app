@@ -1,0 +1,50 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div class="form-group">
+    <label for="Question">Question</label>
+    <textarea class="form-control" id="Question" ngModel required #Question="ngModel" name="Question" rows="3"></textarea>
+    <small id="questionHelp" class="form-text text-muted">Enter the question here.</small>
+  </div>
+  <h4>Options</h4>
+  <div class="form-group">
+    <input type="text" class="form-control" id="option1" ngModel required #option1="ngModel" name="option1"
+           placeholder="Option 1">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="option2" ngModel required #option2="ngModel" name="option2"
+           placeholder="Option 2">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="option3" ngModel required #option3="ngModel" name="option3"
+           placeholder="Option 3">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="option4" ngModel required #option4="ngModel" name="option4"
+           placeholder="Option 4">
+  </div>
+  <h4>Choose the correct answer</h4>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="answer" ngModel id="answer1" value="0">
+    <label class="form-check-label" for="answer1">
+      {{option1.value}}
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="answer" ngModel id="answer2" value="1">
+    <label class="form-check-label" for="answer2">
+      {{option2.value}}
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="answer" ngModel id="answer3" value="2">
+    <label class="form-check-label" for="answer3">
+      {{option3.value}}
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="answer" ngModel id="answer4" value="3">
+    <label class="form-check-label" for="answer4">
+      {{option4.value}}
+    </label>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>

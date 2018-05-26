@@ -9,11 +9,13 @@ import { QuizComponent } from './quiz/quiz.component';
 import {GetQuizService} from './get-quiz.service';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { HomeComponent } from './home/home.component';
+import { AddQuestionsComponent } from './add-questions/add-questions.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'add-quiz', component: QuizFormComponent},
-  {path: 'quiz/:id', component: QuizComponent}
+  {path: 'quiz/:id', component: QuizComponent},
+  {path: 'add-questions', component: AddQuestionsComponent}
 ];
 
 
@@ -22,7 +24,8 @@ const routes: Routes = [
     AppComponent,
     QuizComponent,
     QuizFormComponent,
-    HomeComponent
+    HomeComponent,
+    AddQuestionsComponent
   ],
   schemas: [
     NO_ERRORS_SCHEMA

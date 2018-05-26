@@ -1,12 +1,13 @@
-<form>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
   <div class="form-group">
     <label for="quizTitle">Title</label>
-    <input type="text" class="form-control" id="quizTitle" aria-describedby="Quiz Title" placeholder="Enter Quiz Title">
-    <small id="quizTitleHelp" class="form-text text-muted">Quiz Title</small>
+    <input type="text" class="form-control" id="quizTitle" name="quizTitle" ngModel required #quizTitle="ngModel" aria-describedby="Quiz Title" placeholder="Enter Quiz Title">
+    <small id="quizTitleHelp" class="form-text text-muted">The title that will be displayed</small>
   </div>
   <div class="form-group">
     <label for="quizDescription">Quiz Description</label>
-    <textarea class="form-control" id="quizDescription" rows="3"></textarea>
+    <textarea class="form-control" name="quizDescription" placeholder="Description" ngModel required #quizDescription="ngModel" id="quizDescription" rows="3"></textarea>
+    <small id="quizDescriptionHelp" class="form-text text-muted">Describe your quiz</small>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -10,12 +10,13 @@ import {GetQuizService} from './get-quiz.service';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { HomeComponent } from './home/home.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
+import {QuizService} from './quiz.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'add-quiz', component: QuizFormComponent},
   {path: 'quiz/:id', component: QuizComponent},
-  {path: 'add-questions', component: AddQuestionsComponent}
+  {path: 'add-questions/:id', component: AddQuestionsComponent},
 ];
 
 
@@ -36,7 +37,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    GetQuizService
+    GetQuizService,
+    QuizService
   ],
   bootstrap: [AppComponent]
 })

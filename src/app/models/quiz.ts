@@ -1,7 +1,7 @@
 
 export interface QuizQuestion {
   _id: string;
-  category: {_id: string, name: string};
+  quiz_id: string;
   question: string;
   time: string;
   options: string[];

@@ -1,10 +1,20 @@
+<br>
+<div *ngIf="displayAnswer && !correct" class="alert alert-danger">Wrong</div>
+<div *ngIf="displayAnswer && correct" class="alert alert-success">Correct</div>
 
-<div class="card text-center  " style="width: 18rem; margin-bottom: 20px; margin-top: 20px;">
-  <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">{{ question.category.name }}</h6>
-    <p class="card-text">{{ question.question }}</p>
-    <a *ngFor="let op of question.options; let ans = index" href="#" (click)="isAnswer(ans)" class="card-link">{{ op }}</a>
-    <div>{{correct}}</div>
+<div *ngIf="!endquiz" class="container border py-3 mb-4">
+  <div class="row">
+    <center class="col-md-12">
+      <h3>
+        <span class=" border rounded border-info text-info px-2 m-y-2"> Question {{counter + 1}}</span>{{ question.question }} </h3>
+      <hr>
+
+      <button *ngFor="let op of question.options; let ans = index" (click)="isAnswer(ans)" class="btn mx-1 my-1 btn-info col-sm-5"> {{ op }}</button>
+    </center>
   </div>
 </div>
-<a href="#" (click)="nextQuestion()">Next</a>
+<div *ngIf="displayInfo" class="alert alert-info">The correct answer is {{answer}}</div>
+
+<div *ngIf="endquiz" class="jumbotron">
+  <p>This is the end of the quiz. Your score is: {{score}}/{{questions.length}}</p>
+</div>

@@ -30,6 +30,7 @@ export class AddQuestionsComponent implements OnInit {
     console.log('Modified');
     this.qs.addQuestion(modified);
     console.log(modified);
+    f.resetForm();
   }
 
   done() {

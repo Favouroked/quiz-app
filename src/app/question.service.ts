@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {QuizQuestion} from './models/quiz';
 
 @Injectable()
-export class GetQuizService {
+export class QuestionService {
   questions: QuizQuestion[];
 
   constructor() {
@@ -26,9 +26,16 @@ export class GetQuizService {
     ];
   }
 
-  getQuestions() {
-    return this.questions;
+  getQuestions(quiz_id) {
+    return this.questions.filter(qs => qs.quiz_id === quiz_id);
   }
 
+  getNewId() {
+    return this.questions.length;
+  }
+
+  addQuestion(question) {
+    this.questions.push(question);
+  }
 
 }

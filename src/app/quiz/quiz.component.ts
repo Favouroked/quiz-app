@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {GetQuizService} from '../get-quiz.service';
+import {QuestionService} from '../question.service';
 import {QuizQuestion} from '../models/quiz';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -18,11 +19,12 @@ export class QuizComponent implements OnInit {
   endquiz: boolean;
   score: number;
 
-  constructor(public qs: GetQuizService) {
+  constructor(public qs: QuestionService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.questions = this.qs.getQuestions();
+    const quiz_id = this.route.snapshot.paramMap.get('id');
+    this.questions = this.qs.getQuestions(quiz_id);
     this.question = this.questions[this.counter];
     this.displayAnswer = false;
     this.endquiz = false;

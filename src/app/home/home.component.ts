@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {GetQuizService} from '../get-quiz.service';
-import {QuizQuestion} from '../models/quiz';
+import {Component, OnInit} from '@angular/core';
 import {QuizModel} from '../models/quiz_model';
 import {QuizService} from '../quiz.service';
 
@@ -12,10 +10,11 @@ import {QuizService} from '../quiz.service';
 export class HomeComponent implements OnInit {
   quizzes: QuizModel[];
 
-  constructor(private getQuiz: QuizService) { }
+  constructor(private Quiz: QuizService) {
+  }
 
   ngOnInit() {
-    this.quizzes = this.getQuiz.getQuizzes();
+    this.quizzes = this.Quiz.getQuizzes();
   }
 
 }

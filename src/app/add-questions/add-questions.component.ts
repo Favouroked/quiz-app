@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {QuestionService} from '../question.service';
 
 @Component({
   selector: 'app-add-questions',
@@ -10,7 +11,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AddQuestionsComponent implements OnInit {
   quiz_id: string;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private qs: QuestionService) {
+  }
 
   ngOnInit() {
     this.quiz_id = this.route.snapshot.paramMap.get('id');
@@ -24,7 +26,9 @@ export class AddQuestionsComponent implements OnInit {
     modified['options'] = [f.value.option1, f.value.option2, f.value.option3, f.value.option4];
     modified['quiz_id'] = this.quiz_id;
     modified['time'] = f.value.time;
+    modified['_id'] = this.qs.getNewId();
     console.log('Modified');
+    this.qs.addQuestion(modified);
     console.log(modified);
   }
 

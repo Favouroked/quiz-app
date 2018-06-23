@@ -18,4 +18,13 @@ export class QuizService {
   getQuizzes() {
     return this.quizzes;
   }
+
+  addQuizzes(quiz) {
+    this.quizzes.push(quiz);
+  }
+
+  getNewId() {
+    return this.quizzes.length;
+  }
+
 }

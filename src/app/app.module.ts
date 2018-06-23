@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { QuizComponent } from './quiz/quiz.component';
-import {GetQuizService} from './get-quiz.service';
+import {QuestionService} from './question.service';
 import { QuizFormComponent } from './quiz-form/quiz-form.component';
 import { HomeComponent } from './home/home.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
@@ -37,7 +37,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    GetQuizService,
+    QuestionService,
     QuizService
   ],
   bootstrap: [AppComponent]

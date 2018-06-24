@@ -20,17 +20,19 @@ export class AddQuestionsComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     // console.log(f.value);
-    const modified = {};
-    modified['question'] = f.value.Question;
-    modified['answer'] = f.value.answer;
-    modified['options'] = [f.value.option1, f.value.option2, f.value.option3, f.value.option4];
-    modified['quiz_id'] = this.quiz_id;
-    modified['time'] = f.value.time;
-    modified['_id'] = this.qs.getNewId();
-    // console.log('Modified');
-    this.qs.addQuestion(modified);
-    // console.log(modified);
-    f.resetForm();
+    const modified = {
+      question : f.value.Question,
+      answer : f.value.answer,
+      options : [f.value.option1, f.value.option2, f.value.option3, f.value.option4],
+      quiz_id : this.quiz_id,
+      time : f.value.time,
+    };
+    this.qs.addQuestion(modified)
+      .subscribe(
+        questions => console.log('Question', questions),
+        err => console.log(err),
+        () => f.resetForm()
+      );
   }
 
   done() {

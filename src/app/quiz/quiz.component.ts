@@ -24,11 +24,17 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     const quiz_id = this.route.snapshot.paramMap.get('id');
-    this.questions = this.qs.getQuestions(quiz_id);
-    this.question = this.questions[this.counter];
-    this.displayAnswer = false;
-    this.endquiz = false;
-    this.score = 0;
+    this.qs.getQuestions(quiz_id)
+      .subscribe(
+        (data: QuizQuestion[]) => this.questions = data,
+        err => console.log(err),
+        () => {
+          this.question = this.questions[this.counter];
+          this.displayAnswer = false;
+          this.endquiz = false;
+          this.score = 0;
+        }
+      );
   }
 
   endQuiz() {

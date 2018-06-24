@@ -1,41 +1,34 @@
 import {Injectable} from '@angular/core';
 import {QuizQuestion} from './models/quiz';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @Injectable()
 export class QuestionService {
   questions: QuizQuestion[];
+  urls = {
+    addQuestions: '/api/add-questions',
+    getQuuestions: '/api/get-questions'
+  };
 
-  constructor() {
-    this.questions = [
-      {
-        _id: '1',
-        quiz_id: 'abc123',
-        question: 'What is 1+1',
-        time: '30',
-        options: ['1', '2', '3', '4'],
-        answer: '1'
-      },
-      {
-        _id: '2',
-        quiz_id: 'abc123',
-        question: 'What is 2 x 2',
-        time: '30',
-        options: ['10', '4', '8', '9'],
-        answer: '1'
-      }
-    ];
+  constructor(private http: HttpClient) {
   }
 
   getQuestions(quiz_id) {
-    return this.questions.filter(qs => qs.quiz_id === quiz_id);
+    let params = new HttpParams();
+    params = params.append('id', quiz_id);
+    return this.http.get<QuizQuestion[]>(this.urls.getQuuestions, {params: params});
   }
 
-  getNewId() {
-    return this.questions.length;
+  addQuestion(question: QuizQuestion): Observable<QuizQuestion> {
+    return this.http.post<QuizQuestion>(this.urls.addQuestions, question, httpOptions);
   }
-
-  addQuestion(question) {
-    this.questions.push(question);
-  }
-
 }

@@ -1,6 +1,6 @@
 
 export interface QuizQuestion {
-  _id: string;
+  _id?: string;
   quiz_id: string;
   question: string;
   time: string;

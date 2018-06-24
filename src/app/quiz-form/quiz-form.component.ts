@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {QuizService} from '../quiz.service';
@@ -12,7 +12,8 @@ import {QuizModel} from '../models/quiz_model';
 export class QuizFormComponent implements OnInit {
   newQuiz: QuizModel;
 
-  constructor(private router: Router, private Quiz: QuizService) { }
+  constructor(private router: Router, private Quiz: QuizService) {
+  }
 
   ngOnInit() {
   }
@@ -22,9 +23,10 @@ export class QuizFormComponent implements OnInit {
     const new_quiz = {...f.value};
     console.log(new_quiz);
     this.Quiz.addQuizzes(new_quiz)
-      .subscribe(quiz => quiz_id = quiz._id);
-    this.router.navigate(['/add-questions', quiz_id]);
-    // this.router.navigate(['/']);
+      .subscribe(
+        quiz => quiz_id = quiz._id,
+        (err) => console.log(err),
+        () => this.router.navigate(['/add-questions', quiz_id])
+      );
   }
-
 }

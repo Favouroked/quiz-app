@@ -19,7 +19,7 @@ export class AddQuestionsComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
+    // console.log(f.value);
     const modified = {};
     modified['question'] = f.value.Question;
     modified['answer'] = f.value.answer;
@@ -27,9 +27,9 @@ export class AddQuestionsComponent implements OnInit {
     modified['quiz_id'] = this.quiz_id;
     modified['time'] = f.value.time;
     modified['_id'] = this.qs.getNewId();
-    console.log('Modified');
+    // console.log('Modified');
     this.qs.addQuestion(modified);
-    console.log(modified);
+    // console.log(modified);
     f.resetForm();
   }
 

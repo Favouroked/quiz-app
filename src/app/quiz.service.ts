@@ -1,30 +1,33 @@
 import {Injectable} from '@angular/core';
 import {QuizModel} from './models/quiz_model';
+import {HttpClient} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @Injectable()
 export class QuizService {
-  quizzes: QuizModel[];
+  urls = {
+    getQuiz: '/api/get-quiz',
+    addQuiz: '/api/add-quiz'
+  };
 
-  constructor() {
-    this.quizzes = [
-      {
-        _id: 'abc123',
-        title: 'Sample Title',
-        description: 'Sample Description'
-      }
-    ];
+  constructor(private http: HttpClient) {
   }
 
   getQuizzes() {
-    return this.quizzes;
+    return this.http.get(this.urls.getQuiz, httpOptions);
   }
 
-  addQuizzes(quiz) {
-    this.quizzes.push(quiz);
+  addQuizzes(quiz): Observable<QuizModel> {
+    return this.http.post<QuizModel>(this.urls.addQuiz, quiz, httpOptions);
   }
-
-  getNewId() {
-    return this.quizzes.length;
-  }
-
 }

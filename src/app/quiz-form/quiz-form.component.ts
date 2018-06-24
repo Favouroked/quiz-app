@@ -18,10 +18,11 @@ export class QuizFormComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    const quiz_id = this.Quiz.getNewId();
-    const new_quiz = {_id: quiz_id, ...f.value};
-    // console.log(new_quiz);
-    this.Quiz.addQuizzes(new_quiz);
+    let quiz_id;
+    const new_quiz = {...f.value};
+    console.log(new_quiz);
+    this.Quiz.addQuizzes(new_quiz)
+      .subscribe(quiz => quiz_id = quiz._id);
     this.router.navigate(['/add-questions', quiz_id]);
     // this.router.navigate(['/']);
   }

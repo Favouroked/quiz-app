@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.quizzes = this.Quiz.getQuizzes();
+    this.Quiz.getQuizzes()
+      .subscribe((data: QuizModel[]) => this.quizzes = data);
   }
 
 }
